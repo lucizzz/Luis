@@ -1,0 +1,38 @@
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JFrame;
+
+public class Template extends JFrame {
+
+	private BufferedImage img;
+	
+	public Template() {
+		img = new BufferedImage(1600, 1200, BufferedImage.TYPE_INT_RGB);
+		setBounds(10,10,1600,1200);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("Template");
+		int c = 255<<16;
+		draw(800, 600, c, 100);
+		setVisible(true);
+	}
+	
+	private void draw(int height, int width, int c, int r) {
+        for(int j = -height/2; j < height/2 ; j++){
+            for(int i = -width/2; i < width/2; i++){
+                if(i*i + j*j <= r*r)
+                    img.setRGB(i+width/2, j+height/2, c);
+    }
+  }
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		g.drawImage(img, 0, 0, this);
+	}
+	
+	public static void main(String[] args) {
+		Template t = new Template();
+		
+	}
+}

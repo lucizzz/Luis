@@ -1,0 +1,57 @@
+int x0;
+int y0;
+int r;
+float a = 0;
+
+void setup(){
+  size( 900, 600);
+  background(0);
+  x0 = width/2;
+  y0 = height/2;
+  r = height/2; 
+
+ 
+  //drawLine(x0, y0, x1, y1);
+  
+}
+
+void draw(){
+  background(0);
+  
+  int x1 = round(r*cos(a))+width/2;
+  int y1 = round(r*sin(a))+height/2;
+  stroke(255);
+  line(x0,y0,x1,y1);
+  a += 0.001;
+  
+}
+
+void drawLine(int x0, int y0, int x1, int y1){
+  int dx  = x1 - x0;
+  int dy = y1 - y0;
+  int x = x0, y = y0;
+  int xinc = dx >= 0 ? 1 : -1;
+  int yinc = dy >= 0 ? 1 : -1;
+  float d = 0; float m = dy/(float)dx;
+  
+  //if(abs(dx) > abs(dy)){
+  
+  //}
+ for(;;){
+    set(x,y,color(255));
+    if(x == x1) break;
+    x += xinc;
+    d += m;
+    if(d >= 0.5) {
+      y += yinc;
+      d--; 
+    }
+ }
+}
+
+
+
+
+
+
+
